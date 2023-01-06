@@ -56,7 +56,11 @@ public class BaseTest {
         emailField.sendKeys(email);
     }
 
-    public static void clickSaveButton() {
+      @BeforeMethod
+    public static void launchBrowser() {
+        LoginTests.driver = new ChromeDriver();
+        LoginTests.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    }public static void clickSaveButton() {
         WebElement saveButton = driver.findElement(By.cssSelector("button.btn-submit"));
         saveButton.click();
     }
